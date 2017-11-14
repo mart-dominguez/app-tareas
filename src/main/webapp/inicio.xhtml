@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template1.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="left">
+        <h1>Gestion Tareas</h1>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="frmTareas">
+            <h:panelGrid columns="2">
+            <h:outputText value="Nombre de tarea"></h:outputText>
+            <h:inputText id="nombreTarea"></h:inputText>
+            <h:outputText id="lblPrioridadTarea" value="Prioridad de tarea"></h:outputText>
+            <h:selectOneMenu id="prioridadTarea">
+                <f:selectItem itemValue="1" itemLabel="ALTA"></f:selectItem>
+                <f:selectItem itemValue="2" itemLabel="MEDIA"></f:selectItem>
+                <f:selectItem itemValue="3" itemLabel="Baja"></f:selectItem>
+            </h:selectOneMenu>
+            <h:commandButton value="Crear"></h:commandButton>
+            <h:commandButton value="Cancelar"></h:commandButton>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

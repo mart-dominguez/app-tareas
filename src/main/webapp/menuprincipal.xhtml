@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:component>
+        <h:form>
+        <p:panelMenu >
+            <p:submenu label="Usuarios">
+                <p:menuitem value="Crear" icon="ui-icon-disk" />
+                <p:menuitem value="Crear Grupos" icon="ui-icon-arrowrefresh-1-w" />
+                <p:menuitem value="Listar" icon="ui-icon-disk" />
+                <p:menuitem value="Asignar Privilegios" icon="ui-icon-disk" />
+            </p:submenu>
+            <p:submenu label="Proyectos">
+                <p:menuitem value="Administrar" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Reportes" ajax="false" icon="ui-icon-close"/>
+            </p:submenu>
+            <p:submenu label="Tareas">
+                <p:menuitem value="Crear" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Mis Pendientes" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Reportes" ajax="false" icon="ui-icon-close"/>
+            </p:submenu>
+            <p:submenu label="Configuracion">
+                <p:menuitem value="Estados" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Ayuda" ajax="false" icon="ui-icon-close"/>
+                <p:menuitem value="Varios" ajax="false" icon="ui-icon-close"/>
+            </p:submenu>
+            <p:separator />
+        </p:panelMenu>
+            </h:form>
+    </ui:component>
+</html>
+

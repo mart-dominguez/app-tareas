@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Aplicacion Tareas</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="dashboard.css"/>
+    </h:head>
+    <h:body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#">Gestión de Proyectos</a>
+            </nav>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                    <ui:insert name="left">Left</ui:insert>
+                </nav>
+
+                <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                    <ui:insert name="contenido">contenido</ui:insert>
+                </main>
+                <footer class="footer">
+                    <div class="container">
+                        <span class="text-muted">Aplicacion Curso Ejemplo.</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+    </h:body>
+</html>

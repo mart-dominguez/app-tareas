@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="signin.css"/>
+
+    </h:head>
+
+    <h:body>
+
+    <div class="container">
+
+      <form class="form-signin" jsf:id="formLogin">
+        <h2 class="form-signin-heading">Ingreso al sistema</h2>
+        <label for="inputEmail" class="sr-only">Correo electronico</label>
+        <input type="email" jsf:value="#{loginCtrl.correoUsuario}" jsf:id="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" />
+        <label for="inputPassword" class="sr-only">Clave</label>
+        <input type="password" jsf:value="#{loginCtrl.claveUsuario}" jsf:id="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required" />
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" /> Recordarme
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" jsf:action="#{loginCtrl.doLogin()}" jsf:id="btnLogin" >Ingresar</button>
+      </form>
+
+    </div> <!-- /container -->
+    </h:body>
+</html>

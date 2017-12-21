@@ -5,11 +5,20 @@
  */
 package com.mavha.cap.java.app.tareas.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author martdominguez
  */
+
+@Entity
 public class GrupoUsuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idGrupoUsuario;
     private String nombreGrupo;
 

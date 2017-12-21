@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="frmListaUsuarios">
+         
+        <p:dataTable id="tablaUsers" var="usr" value="#{userController.usuarios}" selection="#{userController.usuarioEditar}" rowKey="#{usr.idUsuario}">
+        <f:facet name="header">
+            Lista de usuarios
+        </f:facet>
+        <p:column selectionMode="single" style="width:32px;text-align:center"/>
+        <p:column headerText="Id User">
+            <h:outputText value="#{usr.idUsuario}" />
+        </p:column>
+        <p:column headerText="Correo">
+            <h:outputText value="#{usr.mail}" />
+        </p:column>
+        <f:facet name="footer">
+            <p:commandButton process="tablaUsers" update=":formAltaUser" icon="ui-icon-search" value="Editar" />
+        </f:facet>
+    </p:dataTable>
+    </h:form>
+</html>
+

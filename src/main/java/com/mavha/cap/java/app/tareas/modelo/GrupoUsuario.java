@@ -37,6 +37,11 @@ public class GrupoUsuario {
     public void setNombreGrupo(String nombreGrupo) {
         this.nombreGrupo = nombreGrupo;
     }
+
+    @Override
+    public String toString() {
+        return "GrupoUsuario{" + "idGrupoUsuario=" + idGrupoUsuario + ", nombreGrupo=" + nombreGrupo + '}';
+    }
     
     
 }

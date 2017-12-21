@@ -79,7 +79,7 @@ public class UsuarioDaoJPA implements UsuarioDao {
 
     @Override
     public List<GrupoUsuario> listarGrupos() {
-        return em.createQuery("SELECT gu FROM GrupoUsuario u").getResultList();
+        return em.createQuery("SELECT gu FROM GrupoUsuario gu").getResultList();
     }
 
 }

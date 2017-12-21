@@ -64,6 +64,12 @@ public class Usuario {
     public void setGrupo(GrupoUsuario grupo) {
         this.grupo = grupo;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", mail=" + mail + ", clave=" + clave + ", grupo=" + grupo + '}';
+    }
+    
     
     
 }

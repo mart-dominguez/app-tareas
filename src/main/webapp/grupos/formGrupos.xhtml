@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:form id="formAltaGrupo">
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+        <div class="form-group">
+            <label for="nombreGrupo">Nombre de grupo</label>
+            <p:inputText pt:type="text" class="form-control" id="nombreGrupo" pt:aria-describedby="nombreHelp" pt:placeholder="Nombre"
+                         value="#{grupoController.gruposEditar.nombreGrupo}"  disabled="#{empty grupoController.gruposEditar}" >
+                <small id="nombreHelp" class="form-text text-muted">Ingrese un nombre de grupos de usuarios.</small>
+            </p:inputText>
+        </div>        
+            <p:commandButton class="btn btn-light" value="Nuevo" disabled="#{not empty grupoController.gruposEditar}" actionListener="#{grupoController.nuevoGrupo()}" update="formAltaGrupo growl"></p:commandButton>
+            <p:commandButton class="btn btn-light" value="Guardar" disabled="#{empty grupoController.gruposEditar}" actionListener="#{grupoController.crearGrupo()}" update=":frmListaGrupos:tablaGrupos growl"></p:commandButton>
+        <p:commandButton class="btn btn-light" value="Cancelar" disabled="#{empty grupoController.gruposEditar}" actionListener="#{grupoController.cancelar()}" update="formAltaGrupo growl"></p:commandButton>
+    </h:form>
+</html>
+

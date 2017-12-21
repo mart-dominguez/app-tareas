@@ -6,6 +6,7 @@
 package com.mavha.cap.java.app.tareas.controller;
 
 import com.mavha.cap.java.app.tareas.dao.UsuarioDao;
+import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.io.Serializable;
 import java.util.List;
@@ -27,6 +28,8 @@ public class UserController implements Serializable{
     private List<Usuario> usuarios;
     
     private Usuario usuarioEditar;
+    
+    private GrupoUsuario grupoAsignar; 
 
     @PostConstruct
     public void inicializar(){
@@ -40,10 +43,12 @@ public class UserController implements Serializable{
     
     public String nuevoUsuario(){
         usuarioEditar = new Usuario();
+       // usuarioEditar.setGrupo(new GrupoUsuario());
         return null;
     }
     
     public String crearUsuario(){
+        System.out.println(" A VER SI GUARDA .. "+usuarioEditar.toString());
         usuarioEditar = userDao.crear(usuarioEditar);
         usuarios.add(usuarioEditar);
         usuarioEditar=null;
@@ -66,6 +71,14 @@ public class UserController implements Serializable{
 
     public void setUsuarioEditar(Usuario usuariosEditar) {
         this.usuarioEditar = usuariosEditar;
+    }
+
+    public GrupoUsuario getGrupoAsignar() {
+        return grupoAsignar;
+    }
+
+    public void setGrupoAsignar(GrupoUsuario grupoAsignar) {
+        this.grupoAsignar = grupoAsignar;
     }
 
     

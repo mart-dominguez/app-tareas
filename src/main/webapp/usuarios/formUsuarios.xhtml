@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:form id="formAltaUser">
             <p:growl id="growl" showDetail="true" sticky="true" />  
         <div class="form-group">
@@ -18,6 +19,12 @@
             <p:password class="form-control" id="password" pt:placeholder="Password" 
                         value="#{userController.usuarioEditar.clave}"  disabled="#{empty userController.usuarioEditar}"></p:password>
         </div>
+            <div class="form-group">
+            <label for="grupo">Grupo</label>
+            <h:selectOneMenu class="form-control" id="grupo" disabled="#{empty userController.usuarioEditar}" value="#{userController.usuarioEditar.grupo}" style="width:150px" converter="grpUsrConverter" >
+                <f:selectItems var="unGrupo" value="#{grupoController.grupos}" itemValue="#{unGrupo}"  itemLabel="#{unGrupo.nombreGrupo}" ></f:selectItems>
+            </h:selectOneMenu>        
+            </div>
         <p:commandButton class="btn btn-light" value="Nuevo" disabled="#{not empty userController.usuarioEditar}" actionListener="#{userController.nuevoUsuario()}" update="formAltaUser growl"></p:commandButton>
         <p:commandButton class="btn btn-light" value="Guardar" disabled="#{empty userController.usuarioEditar}" actionListener="#{userController.crearUsuario()}" update=":frmListaUsuarios:tablaUsers growl"></p:commandButton>
         <p:commandButton class="btn btn-light" value="Cancelar" disabled="#{empty userController.usuarioEditar}" actionListener="#{userController.cancelar()}" update="formAltaUser growl"></p:commandButton>

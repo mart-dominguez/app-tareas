@@ -6,16 +6,32 @@
 package com.mavha.cap.java.app.tareas.modelo;
 
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author martdominguez
  */
+@Entity
 public class Proyecto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProyecto;
+
+    @Column(name="HORAS_PRESUPUESTADAS")
     private Integer horasPresupuestadas;
     private Double costo;
+    @OneToMany(mappedBy = "proyecto")
     private List<Tarea> tareas;    
+    @ManyToOne
+    @JoinColumn(name = "ID_USUARIO_LIDER")
     private Usuario lider;
     
     
@@ -58,6 +74,11 @@ public class Proyecto {
 
     public void setLider(Usuario lider) {
         this.lider = lider;
+    }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" + "idProyecto=" + idProyecto + ", horasPresupuestadas=" + horasPresupuestadas + ", costo=" + costo + ", lider=" + lider + '}';
     }
     
 

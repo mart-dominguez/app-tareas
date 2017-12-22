@@ -6,6 +6,7 @@
 package com.mavha.cap.java.app.tareas.dao;
 
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
+import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import java.util.List;
 
 /**
@@ -18,4 +19,5 @@ public interface ProyectoDao {
    public void borrar(Integer idP);
    public Proyecto buscar(Integer idP); 
    public List<Proyecto> buscarTodos(); 
+   public void asignarTarea(Proyecto p,Tarea t);
 }

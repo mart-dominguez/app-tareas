@@ -5,9 +5,13 @@
  */
 package com.mavha.cap.java.app.tareas.dao;
 
+import com.mavha.cap.java.app.tareas.dao.util.DevDB;
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
+import com.mavha.cap.java.app.tareas.modelo.Tarea;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,7 +22,8 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ProyectoDaoJPA implements ProyectoDao {
 
-    @PersistenceContext(unitName = "tareasPU")
+    //PersistenceContext(unitName = "tareasPU")
+    @Inject @DevDB
     EntityManager em;
 
     @Override
@@ -48,4 +53,12 @@ public class ProyectoDaoJPA implements ProyectoDao {
     public List<Proyecto> buscarTodos() {
         return em.createQuery("SELECT p FROM Proyecto p ").getResultList();
     }
+
+    @Override
+    public void asignarTarea(Proyecto p, Tarea t) {
+        Proyecto aux = em.find(Proyecto.class,p.getIdProyecto());
+        t.setProyecto(aux);
+        em.persist(t);
+    }    
+    
 }

@@ -7,20 +7,41 @@ package com.mavha.cap.java.app.tareas.modelo;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author martdominguez
  */
+@Entity
 public class Tarea {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
     private String descripcion;
+    @Temporal(TemporalType.DATE)
+    @Column(name="FECHA_INICIO")
     private Date fechaInicio;
+    @Column(name="DURACION")
     private Integer duracionHoras;
     
+    @ManyToOne
+    @JoinColumn(name="ID_USUARIO")
     private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name="ID_PROYECTO")
     private Proyecto proyecto;
+    @ManyToOne
+    @JoinColumn(name="ID_CATEGORIA")
     private Estado categoria;
     
     public Integer getId() {

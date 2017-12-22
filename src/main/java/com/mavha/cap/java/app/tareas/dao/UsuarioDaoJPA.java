@@ -5,10 +5,12 @@
  */
 package com.mavha.cap.java.app.tareas.dao;
 
+import com.mavha.cap.java.app.tareas.dao.util.DevDB;
 import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,7 +21,8 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UsuarioDaoJPA implements UsuarioDao {
 
-    @PersistenceContext(unitName = "tareasPU")
+    //PersistenceContext(unitName = "tareasPU")
+    @Inject @DevDB
     EntityManager em;
 
     @Override

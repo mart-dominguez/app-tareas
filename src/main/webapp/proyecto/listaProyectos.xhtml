@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:form id="frmListaProyectos">
+         
+        <p:dataTable id="tablaProyectos" var="pry" value="#{listaProyectoController.proyectos}" selection="#{listaProyectoController.proyectoSeleccionado}" rowKey="#{pry.idProyecto}">
+        <f:facet name="header">
+            Lista de Proyectos
+        </f:facet>
+        <p:column selectionMode="single" style="width:32px;text-align:center"/>
+        <p:column headerText="Id ">
+            <h:outputText value="#{pry.idProyecto}" />
+        </p:column>
+        <p:column headerText="Lider">
+            <h:outputText value="#{pry.lider.mail}" />
+        </p:column>
+        <p:column headerText="Costo">
+            <h:outputText value="#{pry.costo}" />
+        </p:column>
+        <p:column headerText="Horas">
+            <h:outputText value="#{pry.horasPresupuestadas}" />
+        </p:column>
+        <f:facet name="footer">
+            <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" >
+                <f:setPropertyActionListener target="#{proyectoController.proyecto}" value="#{listaProyectoController.proyectoSeleccionado}" />
+            </p:button>
+        </f:facet>
+    </p:dataTable>
+    </h:form>
+</html>
+

@@ -5,9 +5,7 @@
  */
 package com.mavha.cap.java.app.tareas.util;
 
-import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
-import java.util.HashMap;
-import java.util.Map;
+import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,28 +15,21 @@ import javax.faces.convert.FacesConverter;
  *
  * @author martdominguez
  */
-@FacesConverter("grpUsrConverter")
-public class GrupoUsuarioConverter implements Converter {
+@FacesConverter("usrConverter")
+public class UsuarioConverter implements Converter {
 
-    
-    public GrupoUsuarioConverter(){
-    }
-    
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        GrupoUsuario grupo = null;
-        Integer idGrupo = Integer.valueOf(value);
-        grupo = new GrupoUsuario();
-        grupo.setIdGrupoUsuario(idGrupo);
-        return grupo;
+        Usuario obj = new Usuario();
+        Integer id = Integer.valueOf(value);
+        obj.setIdUsuario(id);
+        return obj;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        GrupoUsuario gu = null;
         if (value==null) return null;
-        else gu = (GrupoUsuario) value;
-        return gu.getIdGrupoUsuario().toString();
+        else return ((Usuario)value).getIdUsuario().toString();
     }
     
     

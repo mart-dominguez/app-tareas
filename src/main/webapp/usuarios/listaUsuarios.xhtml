@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:form id="frmListaUsuarios">
          
         <p:dataTable id="tablaUsers" var="usr" value="#{userController.usuarios}" selection="#{userController.usuarioEditar}" rowKey="#{usr.idUsuario}">
@@ -16,6 +17,10 @@
         </p:column>
         <p:column headerText="Correo">
             <h:outputText value="#{usr.mail}" />
+        </p:column>
+        <p:column headerText="Grupo">
+            <h:outputText value="#{usr.grupo.nombreGrupo}" rendered="#{not empty usr.grupo}"/>
+            <h:outputText value="GRUPO NO ASIGNADO " rendered="#{empty usr.grupo}"/>
         </p:column>
         <f:facet name="footer">
             <p:commandButton process="tablaUsers" update=":formAltaUser" icon="ui-icon-search" value="Editar" />

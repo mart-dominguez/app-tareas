@@ -5,6 +5,7 @@
  */
 package com.mavha.cap.java.app.tareas.modelo;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +43,32 @@ public class GrupoUsuario {
     public String toString() {
         return "GrupoUsuario{" + "idGrupoUsuario=" + idGrupoUsuario + ", nombreGrupo=" + nombreGrupo + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.idGrupoUsuario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GrupoUsuario other = (GrupoUsuario) obj;
+        if (!Objects.equals(this.idGrupoUsuario, other.idGrupoUsuario)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }

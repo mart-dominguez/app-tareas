@@ -10,8 +10,11 @@
         <p:dataTable id="tablaProyectos" var="pry" value="#{listaProyectoController.proyectos}" selection="#{listaProyectoController.proyectoSeleccionado}" rowKey="#{pry.idProyecto}">
         <f:facet name="header">
             Lista de Proyectos
-        </f:facet>
+        </f:facet>            
         <p:column selectionMode="single" style="width:32px;text-align:center"/>
+        <p:ajax event="rowSelect" listener="#{listaProyectoController.onRowSelect}"  />
+        <p:ajax event="rowUnselect" listener="#{listaProyectoController.onRowUnselect}" />
+
         <p:column headerText="Id ">
             <h:outputText value="#{pry.idProyecto}" />
         </p:column>
@@ -26,7 +29,7 @@
         </p:column>
         <f:facet name="footer">
             <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" >
-                <f:setPropertyActionListener target="#{proyectoController.proyecto}" value="#{listaProyectoController.proyectoSeleccionado}" />
+                <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
             </p:button>
         </f:facet>
     </p:dataTable>

@@ -22,6 +22,8 @@ import javax.inject.Named;
 @Named("proyectoController")
 public class ProyectoController implements Serializable {
 
+    private Integer idProyecto;
+    
     public ProyectoController() {
         System.out.println(" NUEVO PROYECTO CONTROLLER");
     }
@@ -60,6 +62,19 @@ public class ProyectoController implements Serializable {
     public void setProyecto(Proyecto proyecto) {
         this.proyecto = proyecto;
     }
-    
+
+    public Integer getIdProyecto() {
+        return idProyecto;
+    }
+
+    public void setIdProyecto(Integer idProyecto) {
+        this.idProyecto = idProyecto;
+    }
+
+    public void cargarProyecto(){
+        System.out.println(" CARGA!!! "+this.idProyecto);
+        this.proyecto=this.proyectoDao.buscar(this.idProyecto);
+        System.out.println(" CARGO ? ? ? ?"+this.proyecto);
+    }
     
 }

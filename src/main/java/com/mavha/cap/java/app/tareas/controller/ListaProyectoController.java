@@ -10,11 +10,11 @@ import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 /**
  *
@@ -56,6 +56,13 @@ public class ListaProyectoController implements Serializable{
         this.proyectoSeleccionado = proyectoSeleccionado;
     }
     
+        public void onRowSelect(SelectEvent event) {
+            this.proyectoSeleccionado = (Proyecto) event.getObject();
+        }
+ 
+        public void onRowUnselect(UnselectEvent event) {
+            this.proyectoSeleccionado = null;
+        }
     
     
 }

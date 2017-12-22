@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="formAltaProyecto">
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+        <div class="form-group">
+            <label for="grupo">Lider</label>
+            <h:selectOneMenu class="form-control" id="grupo" disabled="#{empty userController.usuarioEditar}" value="#{userController.usuarioEditar.grupo}" style="width:150px" converter="grpUsrConverter" >
+                <f:selectItems var="unGrupo" value="#{grupoController.grupos}" itemValue="#{unGrupo}"  itemLabel="#{unGrupo.nombreGrupo}" ></f:selectItems>
+            </h:selectOneMenu>        
+        </div>
+        <div class="form-group">
+            <label for="horasProyecto">Horas</label>
+            <p:inputText pt:type="nomber" class="form-control" id="horasProyecto" pt:aria-describedby="emailHelp" pt:placeholder="correo electronico"
+                         value="#{userController.usuarioEditar.mail}"  disabled="#{empty userController.usuarioEditar}" >
+                <small id="emailHelp" class="form-text text-muted">Su correo electronico sera el nombre de usuario.</small>
+            </p:inputText>
+        </div>
+        <div class="form-group">
+            <label for="costoProyecto">Costo Total</label>
+            <p:inputNumber class="form-control" id="costoProyecto" pt:placeholder="Password" 
+                        value="#{userController.usuarioEditar.clave}"  disabled="#{empty userController.usuarioEditar}"></p:inputNumber>
+        </div>
+        <p:commandButton class="btn btn-light" value="Nuevo" disabled="#{not empty userController.usuarioEditar}" actionListener="#{userController.nuevoUsuario()}" update="@form growl"></p:commandButton>
+        <p:commandButton class="btn btn-light" value="Guardar" disabled="#{empty userController.usuarioEditar}" actionListener="#{userController.crearUsuario()}" update="@form growl"></p:commandButton>
+        <p:commandButton class="btn btn-light" value="Cancelar" disabled="#{empty userController.usuarioEditar}" actionListener="#{userController.cancelar()}" update="@form growl"></p:commandButton>
+    </h:form>
+</html>
+

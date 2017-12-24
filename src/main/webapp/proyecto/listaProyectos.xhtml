@@ -7,13 +7,15 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:form id="frmListaProyectos">
          
-        <p:dataTable id="tablaProyectos" var="pry" value="#{listaProyectoController.proyectos}" selection="#{listaProyectoController.proyectoSeleccionado}" rowKey="#{pry.idProyecto}">
+        <p:dataTable id="tablaProyectos" var="pry" value="#{listaProyectoController.proyectos}" 
+                     selectionMode="single"
+                     selection="#{listaProyectoController.proyectoSeleccionado}" rowKey="#{pry.idProyecto}">
         <f:facet name="header">
             Lista de Proyectos
         </f:facet>            
         <p:column selectionMode="single" style="width:32px;text-align:center"/>
-        <p:ajax event="rowSelect" listener="#{listaProyectoController.onRowSelect}"  />
-        <p:ajax event="rowUnselect" listener="#{listaProyectoController.onRowUnselect}" />
+        <p:ajax event="rowSelect" listener="#{listaProyectoController.onRowSelect}" update="frmListaProyectos:txtIdPry btnEditar"/>
+        <p:ajax event="rowUnselect" listener="#{listaProyectoController.onRowUnselect}" update="frmListaProyectos:txtIdPry btnEditar"/>
 
         <p:column headerText="Id ">
             <h:outputText value="#{pry.idProyecto}" />
@@ -28,11 +30,11 @@
             <h:outputText value="#{pry.horasPresupuestadas}" />
         </p:column>
         <f:facet name="footer">
-            <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" >
+            <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" id="btnEditar">
                 <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
-            </p:button>
+            </p:button>            
         </f:facet>
     </p:dataTable>
+        <h:outputText id="txtIdPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}"></h:outputText>
     </h:form>
 </html>
-

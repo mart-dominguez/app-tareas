@@ -49,8 +49,8 @@ public class ProyectoController implements Serializable {
     
     public String guardar(){
         System.out.println(this.proyecto.toString());
-        if(this.proyecto.getIdProyecto()!=null && this.proyecto.getIdProyecto()>0)        this.proyectoDao.crear(proyecto);
-        else this.proyectoDao.actualizar(proyecto);
+        if(this.proyecto.getIdProyecto()!=null && this.proyecto.getIdProyecto()>0)        this.proyectoDao.actualizar(proyecto);
+        else this.proyectoDao.crear(proyecto);
         proyecto = null;
         return "/listaProyectos.xhtml";
     }
@@ -73,7 +73,7 @@ public class ProyectoController implements Serializable {
 
     public void cargarProyecto(){
         System.out.println(" CARGA!!! "+this.idProyecto);
-        this.proyecto=this.proyectoDao.buscar(this.idProyecto);
+        if(this.idProyecto!=null)  this.proyecto=this.proyectoDao.buscar(this.idProyecto);
         System.out.println(" CARGO ? ? ? ?"+this.proyecto);
     }
     

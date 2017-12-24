@@ -57,6 +57,7 @@ public class ListaProyectoController implements Serializable{
     }
     
         public void onRowSelect(SelectEvent event) {
+            System.out.println(" Seleccionado!!" +event);
             this.proyectoSeleccionado = (Proyecto) event.getObject();
         }
  

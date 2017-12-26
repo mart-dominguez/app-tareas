@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:form id="frmListaProyectos">
          
         <p:dataTable id="tablaProyectos" var="pry" value="#{listaProyectoController.proyectos}" 
@@ -32,9 +33,19 @@
         <f:facet name="footer">
             <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" id="btnEditar">
                 <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
-            </p:button>            
+            </p:button>   
+             <p:button value="Agregar tarea"  icon="ui-icon-search" id="btnAddTarea">
+                <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
+            </p:button>
         </f:facet>
     </p:dataTable>
         <h:outputText id="txtIdPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}"></h:outputText>
+    </h:form>
+    <h:form id="frmAltaTarea">
+          <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <ui:include src="altaProyectos.xhtml"></ui:include>            
+        </p:outputPanel>
+    </p:dialog>
     </h:form>
 </html>

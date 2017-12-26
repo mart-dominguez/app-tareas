@@ -36,6 +36,7 @@ public class ListaProyectoController implements Serializable{
     
     @PostConstruct
     public void init(){
+        System.out.println(" NUEVO LISTA ! ! ! ! PROYECTO CONTROLLER");        
         this.proyectos = dao.buscarTodos();
         
     }

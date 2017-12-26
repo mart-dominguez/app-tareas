@@ -48,6 +48,33 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+                <configuration>
+                    <!-- Análisis más detallado pero que consume más memoria -->
+                    <effort>Max</effort>
+                    <!-- Reporta todos los bugs (otra opción es Medium o Max -->
+                    <threshold>Low</threshold>
+                    <!-- genera un reporte XML-->
+                    <xmlOutput>true</xmlOutput>     
+                    <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                    <failOnError>false</failOnError>             
+                </configuration>
+                <executions>
+                    <!-- 
+                        Ensures that FindBugs inspects source code when project is compiled. 
+                    -->
+                    <execution>
+                        <id>analyze-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -93,7 +120,29 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>   
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.8</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+                <configuration>
+                    <!-- Análisis más detallado pero que consume más memoria -->
+                    <effort>Max</effort>
+                    <!-- Reporta todos los bugs (otra opción es Medium o Max -->
+                    <threshold>Low</threshold>
+                    <!-- genera un reporte XML-->
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
     <repositories>
         <repository>
             <id>unknown-jars-temp-repo</id>

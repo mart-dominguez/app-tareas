@@ -15,6 +15,7 @@ import java.util.List;
  */
 public interface ProyectoDao {
    public Proyecto crear(Proyecto p); 
+
    public Proyecto actualizar(Proyecto p); 
    public void borrar(Integer idP);
    public Proyecto buscar(Integer idP); 

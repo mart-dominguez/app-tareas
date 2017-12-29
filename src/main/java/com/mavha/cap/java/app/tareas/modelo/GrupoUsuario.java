@@ -5,6 +5,7 @@
  */
 package com.mavha.cap.java.app.tareas.modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class GrupoUsuario {
+public class GrupoUsuario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idGrupoUsuario;

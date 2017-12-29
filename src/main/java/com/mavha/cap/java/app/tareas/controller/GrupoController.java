@@ -22,6 +22,7 @@ import javax.inject.Named;
 @ViewScoped
 @Named("grupoController")
 public class GrupoController implements Serializable{
+    
     @Inject UsuarioDao userDao;
     
     private List<GrupoUsuario> grupos;

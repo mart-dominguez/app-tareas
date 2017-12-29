@@ -27,4 +27,5 @@ public interface UsuarioDao {
 
     public List<Usuario> listarUsuarios();
     public List<GrupoUsuario> listarGrupos();
+    
 }

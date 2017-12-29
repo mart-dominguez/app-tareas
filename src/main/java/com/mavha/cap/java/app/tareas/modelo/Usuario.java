@@ -33,6 +33,8 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "ID_GRUPO")
     private GrupoUsuario grupo;
+    
+    //TODO agregar costo hora
 
     public Integer getIdUsuario() {
         return idUsuario;

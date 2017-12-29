@@ -56,6 +56,8 @@ public class ProyectoDaoJPA implements ProyectoDao {
 
     @Override
     public void asignarTarea(Proyecto p, Tarea t) {
+        System.out.println(p);
+        System.out.println(t);
         Proyecto aux = em.find(Proyecto.class,p.getIdProyecto());
         t.setProyecto(aux);
         em.persist(t);

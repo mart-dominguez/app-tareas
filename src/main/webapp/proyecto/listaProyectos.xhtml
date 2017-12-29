@@ -34,18 +34,20 @@
             <p:button value="Editar" outcome="proyectos.xhtml" icon="ui-icon-search" id="btnEditar">
                 <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
             </p:button>   
-             <p:button value="Agregar tarea"  icon="ui-icon-search" id="btnAddTarea">
-                <f:param name="idPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}" />
-            </p:button>
+             <p:commandButton value="Agregar tarea"  
+                             icon="ui-icon-search" 
+                             id="btnAddTarea" 
+                             process="@form"
+                             oncomplete="PF('tareaDlg').show();">
+                 <f:setPropertyActionListener target="#{tareaCtrl.proyecto}" value="#{listaProyectoController.proyectoSeleccionado}" />
+            </p:commandButton>
         </f:facet>
     </p:dataTable>
         <h:outputText id="txtIdPry" value="#{listaProyectoController.proyectoSeleccionado.idProyecto}"></h:outputText>
     </h:form>
-    <h:form id="frmAltaTarea">
-          <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+    <p:dialog header="Car Info" widgetVar="tareaDlg" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="carDetail" style="text-align:center;">
-            <ui:include src="altaProyectos.xhtml"></ui:include>            
+            <ui:include src="formTarea.xhtml"></ui:include>            
         </p:outputPanel>
     </p:dialog>
-    </h:form>
 </html>

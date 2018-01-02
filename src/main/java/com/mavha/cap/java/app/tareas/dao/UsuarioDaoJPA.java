@@ -85,4 +85,14 @@ public class UsuarioDaoJPA implements UsuarioDao {
         return em.createQuery("SELECT gu FROM GrupoUsuario gu").getResultList();
     }
 
+    @Override
+    public Usuario buscarUsuario(String nombre, String clave) {
+        Usuario usr = (Usuario) em.createQuery("SELECT u FROM Usuario u WHERE u.clave = :P_CLAVE AND u.mail=:P_MAIL ")
+                .setParameter("P_MAIL", nombre)
+                .setParameter("P_CLAVE", clave)
+                .getSingleResult();
+        return usr;
+    }
+    
+
 }

@@ -27,5 +27,6 @@ public interface UsuarioDao {
 
     public List<Usuario> listarUsuarios();
     public List<GrupoUsuario> listarGrupos();
-    
+    public Usuario buscarUsuario(String nombre, String clave);
+
 }

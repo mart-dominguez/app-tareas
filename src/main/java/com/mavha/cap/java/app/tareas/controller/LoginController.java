@@ -5,8 +5,13 @@
  */
 package com.mavha.cap.java.app.tareas.controller;
 
+import com.mavha.cap.java.app.tareas.dao.UsuarioDao;
+import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -18,10 +23,20 @@ import javax.inject.Named;
 public class LoginController implements Serializable{
     private String correoUsuario;
     private String claveUsuario;
+    
+    private Usuario usuarioLogueado;
+    @Inject UsuarioDao userDao;
 
     public String doLogin(){
-        if(correoUsuario.length()>5 && claveUsuario.equalsIgnoreCase("1234")) return "inicio.xhtml";
-        return null;
+      //  if(correoUsuario.length()>5 && claveUsuario.equalsIgnoreCase("1234")) return "inicio.xhtml";
+      try{
+          usuarioLogueado= userDao.buscarUsuario(correoUsuario, claveUsuario);
+          return "inicio.xhtml";
+      }  catch(Exception e){
+          FacesContextit .getCurrentInstance().
+          FacesMessage.
+      }
+      return null;
     }
     
     public String getCorreoUsuario() {

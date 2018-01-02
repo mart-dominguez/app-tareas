@@ -33,10 +33,14 @@ public class LoginController implements Serializable{
           usuarioLogueado= userDao.buscarUsuario(correoUsuario, claveUsuario);
           return "inicio.xhtml";
       }  catch(Exception e){
-          FacesContextit .getCurrentInstance().
-          FacesMessage.
+          FacesContext.getCurrentInstance().addMessage(claveUsuario, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o clave incorrectos!", "Verificar los datos."));
       }
       return null;
+    }
+    
+    public String doLogout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login.xhtml";
     }
     
     public String getCorreoUsuario() {

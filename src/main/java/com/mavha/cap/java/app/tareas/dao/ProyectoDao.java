@@ -21,4 +21,6 @@ public interface ProyectoDao {
    public Proyecto buscar(Integer idP); 
    public List<Proyecto> buscarTodos(); 
    public void asignarTarea(Proyecto p,Tarea t);
+   public Double presupuestoConsumido(Proyecto p);
+   public Integer horasConsumidas(Proyecto p);
 }

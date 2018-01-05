@@ -33,8 +33,8 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "ID_GRUPO")
     private GrupoUsuario grupo;
-    
     //TODO agregar costo hora
+    private Double salarioHora;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -96,6 +96,14 @@ public class Usuario {
             return false;
         }
         return true;
+    }
+
+    public Double getSalarioHora() {
+        return salarioHora;
+    }
+
+    public void setSalarioHora(Double salarioHora) {
+        this.salarioHora = salarioHora;
     }
     
     

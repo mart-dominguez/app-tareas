@@ -62,5 +62,15 @@ public class ProyectoDaoJPA implements ProyectoDao {
         t.setProyecto(aux);
         em.persist(t);
     }    
+
+    @Override
+    public Double presupuestoConsumido(Proyecto p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Integer horasConsumidas(Proyecto p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

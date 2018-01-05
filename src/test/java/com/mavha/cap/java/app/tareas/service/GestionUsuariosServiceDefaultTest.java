@@ -55,4 +55,12 @@ public class GestionUsuariosServiceDefaultTest {
         assertFalse(esValido);
         assertThat(usuariosSrv.getMotivos(), contains(MotivosError.PASSWORD_MUY_CORTA));
     }
+    
+    @Test
+    public void testUsuarioNoValidoClaveSinMinuscula() {
+        Boolean esValido = usuariosSrv.usuarioValido("martin@mail.com", "AABBCC12FG");
+        assertFalse(esValido);
+        MotivosError motivo = usuariosSrv.getMotivos().get(0);
+        assertThat(motivo.toString(),startsWith("PASSWORD"));
+    }
 }

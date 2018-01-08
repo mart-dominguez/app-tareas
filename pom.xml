@@ -29,12 +29,7 @@
                 <version>1.2.0.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.arquillian.junit</groupId>
-                <artifactId>arquillian-junit-container</artifactId>
-                <scope>test</scope>
-            </dependency>
+            </dependency>           
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -74,7 +69,17 @@
             <version>2.13.0</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.arquillian</groupId>
+            <artifactId>wildfly-arquillian-container-managed</artifactId>
+            <version>2.1.0.Final</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -12,12 +12,31 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.arquillian>1.2.0.Final</version.arquillian>
+        <version.wildfly>10.0.0.Alpha6</version.wildfly>
     </properties>
     <scm>
         <url>hhttps://github.com/mart-dominguez/app-tareas</url>        
         <connection>scm:git:git@github.com:mart-dominguez/app-tareas.git</connection>
         <developerConnection>scm:git:git@github.com:mart-dominguez/app-tareas.git</developerConnection>
     </scm>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.2.0.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.junit</groupId>
+                <artifactId>arquillian-junit-container</artifactId>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

@@ -7,6 +7,7 @@ package com.mavha.cap.java.app.tareas.service;
 
 import com.mavha.cap.java.app.tareas.dao.ProyectoDao;
 import com.mavha.cap.java.app.tareas.dao.ProyectoDaoJPA;
+import com.mavha.cap.java.app.tareas.dao.ProyectoSimple;
 import com.mavha.cap.java.app.tareas.dao.TareaDao;
 import com.mavha.cap.java.app.tareas.dao.TareaDaoJPA;
 import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
@@ -15,17 +16,20 @@ import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
+import org.mockito.hamcrest.MockitoHamcrest;
 /**
  *
  * @author mdominguez
@@ -71,7 +75,7 @@ public class GestionTareasServiceDefaultTest {
         when(pendientes.size()).thenReturn(3);
         when(tareaDao.tareasPendientes(t.getUsuario())).thenReturn(pendientes);
         when(proyectoDao.presupuestoConsumido(p)).thenReturn(790.0);
-        when(proyectoDao.horasConsumidas(p)).thenReturn(89);
+        when(proyectoDao.horasConsumidas(ArgumentMatchers.argThat(new ProyectoSimple()))).thenReturn(89);
 
     }
     
@@ -96,6 +100,7 @@ public class GestionTareasServiceDefaultTest {
     public void testAgregarTareaSiNoHayPresupuesto() {
         user.setSalarioHora(21.5);
         classUnderTest.agregarTarea(p, t);
+        
         verify(proyectoDao,never()).asignarTarea(p, t);
     }
 
@@ -108,7 +113,7 @@ public class GestionTareasServiceDefaultTest {
     }
 
     @Test
-    public void testAgregarTareaSiNoEsDeveloper() {
+    public void testAgregarTareaSiNoEsDeveloper() {       
         t.getUsuario().getGrupo().setIdGrupoUsuario(99);
         classUnderTest.agregarTarea(p, t);
         verify(proyectoDao,never()).asignarTarea(p, t);

@@ -9,11 +9,13 @@ import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author mdominguez
  */
+@ApplicationScoped
 public class GestionUsuariosServiceDefault implements GestionUsuariosService {
 
     private List<MotivosError> motivos;

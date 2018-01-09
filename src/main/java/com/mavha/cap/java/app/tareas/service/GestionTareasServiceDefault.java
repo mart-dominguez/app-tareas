@@ -9,12 +9,14 @@ import com.mavha.cap.java.app.tareas.dao.ProyectoDao;
 import com.mavha.cap.java.app.tareas.dao.TareaDao;
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 /**
  *
  * @author mdominguez
  */
+@RequestScoped
 public class GestionTareasServiceDefault implements GestionTareasService {
 
     @Inject

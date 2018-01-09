@@ -9,6 +9,7 @@ package com.mavha.cap.java.app.tareas.service;
  *
  * @author mdominguez
  */
+
 public interface GestionUsuariosService {
 
     public Boolean usuarioValido(String usuario,String clave);

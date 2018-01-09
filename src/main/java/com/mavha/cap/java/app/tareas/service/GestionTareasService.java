@@ -7,11 +7,14 @@ package com.mavha.cap.java.app.tareas.service;
 
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author mdominguez
  */
+
+@RequestScoped
 public interface GestionTareasService {
     
     /**

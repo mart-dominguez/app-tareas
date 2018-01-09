@@ -14,7 +14,6 @@ import javax.enterprise.context.RequestScoped;
  * @author mdominguez
  */
 
-@RequestScoped
 public interface GestionTareasService {
     
     /**

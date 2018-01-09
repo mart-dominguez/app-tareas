@@ -6,6 +6,7 @@
 package com.mavha.cap.java.app.tareas.dao;
 
 import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
+import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.util.List;
 
@@ -28,5 +29,7 @@ public interface UsuarioDao {
     public List<Usuario> listarUsuarios();
     public List<GrupoUsuario> listarGrupos();
     public Usuario buscarUsuario(String nombre, String clave);
+    public List<Tarea> tareasPendientes(Usuario u);
 
+    
 }

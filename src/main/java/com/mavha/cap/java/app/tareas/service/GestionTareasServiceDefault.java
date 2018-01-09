@@ -7,6 +7,7 @@ package com.mavha.cap.java.app.tareas.service;
 
 import com.mavha.cap.java.app.tareas.dao.ProyectoDao;
 import com.mavha.cap.java.app.tareas.dao.TareaDao;
+import com.mavha.cap.java.app.tareas.dao.UsuarioDao;
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +21,7 @@ import javax.inject.Inject;
 public class GestionTareasServiceDefault implements GestionTareasService {
 
     @Inject
-    TareaDao tareaDao;
+    UsuarioDao usuarioDao;
 
     @Inject
     ProyectoDao proyectoDao;
@@ -29,7 +30,7 @@ public class GestionTareasServiceDefault implements GestionTareasService {
     public void agregarTarea(Proyecto p, Tarea t) {
         Double costoTarea = t.getUsuario().getSalarioHora() * t.getDuracionHoras();
         Integer duracionTarea = t.getDuracionHoras();
-        Integer tareasSinTerminar = tareaDao.tareasPendientes(t.getUsuario()).size();
+        Integer tareasSinTerminar = usuarioDao.tareasPendientes(t.getUsuario()).size();
 
         // calcular tiempo restante
         Integer tiempoRestante = p.getHorasPresupuestadas() - proyectoDao.horasConsumidas(p);

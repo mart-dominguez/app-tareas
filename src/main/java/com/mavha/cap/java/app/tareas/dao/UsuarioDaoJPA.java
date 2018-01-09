@@ -7,6 +7,7 @@ package com.mavha.cap.java.app.tareas.dao;
 
 import com.mavha.cap.java.app.tareas.dao.util.DevDB;
 import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
+import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -92,6 +93,11 @@ public class UsuarioDaoJPA implements UsuarioDao {
                 .setParameter("P_CLAVE", clave)
                 .getSingleResult();
         return usr;
+    }
+
+    @Override
+    public List<Tarea> tareasPendientes(Usuario u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 

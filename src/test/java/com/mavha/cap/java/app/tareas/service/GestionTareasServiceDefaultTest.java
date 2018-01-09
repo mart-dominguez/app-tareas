@@ -5,31 +5,23 @@
  */
 package com.mavha.cap.java.app.tareas.service;
 
-import com.mavha.cap.java.app.tareas.dao.ProyectoDao;
 import com.mavha.cap.java.app.tareas.dao.ProyectoDaoJPA;
-import com.mavha.cap.java.app.tareas.dao.ProyectoSimple;
-import com.mavha.cap.java.app.tareas.dao.TareaDao;
-import com.mavha.cap.java.app.tareas.dao.TareaDaoJPA;
+import com.mavha.cap.java.app.tareas.dao.UsuarioDaoJPA;
 import com.mavha.cap.java.app.tareas.modelo.GrupoUsuario;
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
 import com.mavha.cap.java.app.tareas.modelo.Usuario;
 import java.util.ArrayList;
-import java.util.List;
-import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
-import org.mockito.hamcrest.MockitoHamcrest;
 /**
  *
  * @author mdominguez
@@ -39,13 +31,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class GestionTareasServiceDefaultTest {
     
-    @Mock TareaDaoJPA tareaDao;
+    @Mock UsuarioDaoJPA usrDao;
     @Mock ProyectoDaoJPA proyectoDao;
     @Mock ArrayList<Tarea> pendientes;
 
   
     @InjectMocks
-    private  GestionTareasServiceDefault classUnderTest;
+    private  GestionTareasServiceDefault logicaTareaTesteada;
     Proyecto p;
     Tarea t;
     Usuario user;
@@ -73,10 +65,8 @@ public class GestionTareasServiceDefaultTest {
         user.getGrupo().setIdGrupoUsuario(3);
 
         when(pendientes.size()).thenReturn(3);
-        when(tareaDao.tareasPendientes(t.getUsuario())).thenReturn(pendientes);
+        when(usrDao.tareasPendientes(t.getUsuario())).thenReturn(pendientes);
         when(proyectoDao.presupuestoConsumido(p)).thenReturn(790.0);
-        when(proyectoDao.horasConsumidas(ArgumentMatchers.argThat(new ProyectoSimple()))).thenReturn(89);
-
     }
     
     @After
@@ -92,14 +82,14 @@ public class GestionTareasServiceDefaultTest {
      */
     @Test
     public void testAgregarTarea() {
-        classUnderTest.agregarTarea(p, t);
+        logicaTareaTesteada.agregarTarea(p, t);
         verify(proyectoDao).asignarTarea(p, t);
     }
     
     @Test
     public void testAgregarTareaSiNoHayPresupuesto() {
         user.setSalarioHora(21.5);
-        classUnderTest.agregarTarea(p, t);
+        logicaTareaTesteada.agregarTarea(p, t);
         
         verify(proyectoDao,never()).asignarTarea(p, t);
     }
@@ -108,14 +98,14 @@ public class GestionTareasServiceDefaultTest {
     public void testAgregarTareaSiNoHayTiempo() {
         t.setDuracionHoras(20);
         // salario...
-        classUnderTest.agregarTarea(p, t);
+        logicaTareaTesteada.agregarTarea(p, t);
         verify(proyectoDao,never()).asignarTarea(p, t);
     }
 
     @Test
     public void testAgregarTareaSiNoEsDeveloper() {       
         t.getUsuario().getGrupo().setIdGrupoUsuario(99);
-        classUnderTest.agregarTarea(p, t);
+        logicaTareaTesteada.agregarTarea(p, t);
         verify(proyectoDao,never()).asignarTarea(p, t);
     }
 
@@ -123,7 +113,7 @@ public class GestionTareasServiceDefaultTest {
     @Test
     public void testAgregarTareaSiMuchasTareasAbiertas() {
         when(pendientes.size()).thenReturn(4);
-        classUnderTest.agregarTarea(p, t);
+        logicaTareaTesteada.agregarTarea(p, t);
         verify(proyectoDao,never()).asignarTarea(p, t);
     }
 

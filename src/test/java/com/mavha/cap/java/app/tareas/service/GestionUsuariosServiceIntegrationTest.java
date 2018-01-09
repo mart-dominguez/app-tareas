@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mavha.cap.java.app.tareas.dao.integracion;
+package com.mavha.cap.java.app.tareas.service;
 
 import com.mavha.cap.java.app.tareas.service.GestionUsuariosService;
 import com.mavha.cap.java.app.tareas.service.GestionUsuariosServiceDefault;
@@ -25,7 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class GreeterTester {
+public class GestionUsuariosServiceIntegrationTest {
     
     @Inject GestionUsuariosService usuariosSrv;
 

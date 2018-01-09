@@ -38,6 +38,7 @@ public class GestionTareasServiceDefaultTest {
   
     @InjectMocks
     private  GestionTareasServiceDefault logicaTareaTesteada;
+    
     Proyecto p;
     Tarea t;
     Usuario user;
@@ -74,7 +75,7 @@ public class GestionTareasServiceDefaultTest {
         p = null;
         t = null;
         user = null;
-        GrupoUsuario gu = null;
+        gu = null;
     }
 
     /**

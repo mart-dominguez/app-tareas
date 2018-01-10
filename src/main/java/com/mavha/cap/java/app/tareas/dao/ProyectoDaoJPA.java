@@ -8,12 +8,10 @@ package com.mavha.cap.java.app.tareas.dao;
 import com.mavha.cap.java.app.tareas.dao.util.DevDB;
 import com.mavha.cap.java.app.tareas.modelo.Proyecto;
 import com.mavha.cap.java.app.tareas.modelo.Tarea;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -65,12 +63,16 @@ public class ProyectoDaoJPA implements ProyectoDao {
 
     @Override
     public Double presupuestoConsumido(Proyecto p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT SUM(t.duracionHoras * t.usuario.salarioHora) FROM Tarea t WHERE t.proyecto.idProyecto = :P_ID_PRY ";
+        Number resultado = (Number) em.createQuery(sql).setParameter("P_ID_PRY", p.getIdProyecto()).getSingleResult();
+        return resultado.doubleValue();
     }
 
     @Override
     public Integer horasConsumidas(Proyecto p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT SUM(t.duracionHoras) FROM Tarea t WHERE t.proyecto.idProyecto = :P_ID_PRY ";
+        Number resultado = (Number) em.createQuery(sql).setParameter("P_ID_PRY", p.getIdProyecto()).getSingleResult();
+        return resultado.intValue();
     }
     
 }

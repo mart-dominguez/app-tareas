@@ -13,7 +13,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -22,6 +21,8 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UsuarioDaoJPA implements UsuarioDao {
 
+    private static final String SQL_TAREAS_EN_CURSO = "\"SELECT t FROM Tarea t WHERE t.categoria.estado in ('EN_CURSO','RE_ABIERTA') AND t.usuario.idUsuario = :P_ID_USR";
+    
     //PersistenceContext(unitName = "tareasPU")
     @Inject @DevDB
     EntityManager em;
@@ -97,7 +98,7 @@ public class UsuarioDaoJPA implements UsuarioDao {
 
     @Override
     public List<Tarea> tareasPendientes(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return em.createQuery(SQL_TAREAS_EN_CURSO).setParameter("P_ID_USR", u.getIdUsuario()).getResultList();
     }
     
 

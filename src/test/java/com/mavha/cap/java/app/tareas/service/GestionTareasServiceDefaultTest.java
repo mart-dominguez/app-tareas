@@ -75,7 +75,6 @@ public class GestionTareasServiceDefaultTest {
         p = null;
         t = null;
         user = null;
-        gu = null;
     }
 
     /**

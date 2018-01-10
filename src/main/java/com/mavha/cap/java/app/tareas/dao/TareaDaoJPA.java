@@ -17,7 +17,7 @@ public class TareaDaoJPA implements TareaDao{
 
     @Override
     public List<Tarea> tareasPendientes(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
     
 }

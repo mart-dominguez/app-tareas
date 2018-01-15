@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -21,7 +22,8 @@ import javax.persistence.EntityManager;
 @Stateless
 public class UsuarioDaoJPA implements UsuarioDao {
 
-    private static final String SQL_TAREAS_EN_CURSO = "\"SELECT t FROM Tarea t WHERE t.categoria.estado in ('EN_CURSO','RE_ABIERTA') AND t.usuario.idUsuario = :P_ID_USR";
+    //private static final String SQL_TAREAS_EN_CURSO = "SELECT t FROM Tarea t WHERE t.categoria.estado in ('EN_CURSO','RE_ABIERTA') AND t.usuario.idUsuario = :P_ID_USR";
+    private static final String SQL_TAREAS_EN_CURSO = "SELECT t FROM Tarea t WHERE t.categoria.estado.id in (2,6) AND t.usuario.idUsuario = :P_ID_USR";
     
     //PersistenceContext(unitName = "tareasPU")
     @Inject @DevDB
@@ -98,7 +100,10 @@ public class UsuarioDaoJPA implements UsuarioDao {
 
     @Override
     public List<Tarea> tareasPendientes(Usuario u) {
-       return em.createQuery(SQL_TAREAS_EN_CURSO).setParameter("P_ID_USR", u.getIdUsuario()).getResultList();
+        Query q = em.createQuery(SQL_TAREAS_EN_CURSO);
+        if(q!=null ) q.setParameter("P_ID_USR", u.getIdUsuario());
+       if(q!=null && q.getResultList()!=null) return q.getResultList();
+       else return null;
     }
     
 

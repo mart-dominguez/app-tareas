@@ -60,6 +60,7 @@ public class GestionTareasServiceIntegrationTest {
     @Test
     public void addTarea(){
         Usuario u = usuarioDao.buscarUsuario(1);
+        assertThat("USUARIO NO NULL",u,notNullValue());
         Proyecto p = proyectoDao.buscar(1);
         Tarea t1 = new Tarea();
         t1.setDescripcion("TAREA test");

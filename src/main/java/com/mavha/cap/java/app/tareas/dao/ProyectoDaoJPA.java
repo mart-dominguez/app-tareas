@@ -74,5 +74,12 @@ public class ProyectoDaoJPA implements ProyectoDao {
         Number resultado = (Number) em.createQuery(sql).setParameter("P_ID_PRY", p.getIdProyecto()).getSingleResult();
         return resultado.intValue();
     }
+
+    @Override
+    public List<Tarea> tareas(Integer idP) {
+        int i = this.buscar(idP).getTareas().size();
+        System.out.println("HOLA: " + i);
+        return this.buscar(idP).getTareas();
+    }
     
 }

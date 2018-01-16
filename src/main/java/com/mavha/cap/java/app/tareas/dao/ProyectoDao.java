@@ -23,4 +23,5 @@ public interface ProyectoDao {
    public void asignarTarea(Proyecto p,Tarea t);
    public Double presupuestoConsumido(Proyecto p);
    public Integer horasConsumidas(Proyecto p);
+   public List<Tarea> tareas(Integer idP);
 }

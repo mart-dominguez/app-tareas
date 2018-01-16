@@ -50,6 +50,7 @@ public class GestionTareasServiceIntegrationTest {
                 .addPackages(true,"com.mavha.cap.java.app.tareas.modelo","com.mavha.cap.java.app.tareas.dao")
                 .addClasses(GestionTareasService.class,GestionTareasServiceDefault.class)
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("data/load-data-test.sql", "data/load-data-test.sql")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
      
       /*return ShrinkWrap.create(ZipImporter.class, "app-tareas.war").importFrom(new File("target/app-tareas-1.0-SNAPSHOT.war"))
@@ -59,7 +60,7 @@ public class GestionTareasServiceIntegrationTest {
     
     @Test
     public void addTarea(){
-        Usuario u = usuarioDao.buscarUsuario(1);
+        Usuario u = usuarioDao.buscarUsuario(5);
         assertThat("USUARIO NO NULL",u,notNullValue());
         Proyecto p = proyectoDao.buscar(1);
         Tarea t1 = new Tarea();
@@ -72,16 +73,15 @@ public class GestionTareasServiceIntegrationTest {
         assertThat("Tiene menos de 3 pendientes", pendientes.size(), lessThan(4));
         
         Double presupConsumido = proyectoDao.presupuestoConsumido(p);
-        assertThat("Hay presupuesto", presupConsumido, is(0.0));
+        assertThat("Hay presupuesto", presupConsumido, is(40.0));
 
         Integer hsConsumidas = proyectoDao.horasConsumidas(p);
-        assertThat("Hay horas", hsConsumidas, is(0));
+        assertThat("Hay horas", hsConsumidas, is(4));
         
-        Integer tareas = p.getTareas().size();
+        Integer tareas = proyectoDao.tareas(1).size();
         tareasSrv.agregarTarea(p, t1);
-       
-        Proyecto proyectoConNuevaTarea = proyectoDao.buscar(1);
-        assertThat("Tarea nueva agregada", proyectoConNuevaTarea.getTareas().size(), is(tareas+1));
+        Integer tareasNueva = proyectoDao.tareas(1).size();
+        assertThat("Tarea nueva agregada", tareasNueva, is(tareas+1));
     }
 
 }

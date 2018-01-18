@@ -1,22 +1,24 @@
-INSERT INTO Estado("id", "estado") VALUES (1,"PLANIFICADA");
-INSERT INTO Estado("id", "estado") VALUES (2,"EN_CURSO");
-INSERT INTO Estado("id", "estado") VALUES (3,"FINALIZADA");
-INSERT INTO Estado("id", "estado") VALUES (4,"APROBADA");
-INSERT INTO Estado("id", "estado") VALUES (5,"RECHAZADA");
-INSERT INTO Estado("id", "estado") VALUES (6,"RE_ABIERTA");
+USE ams_tareas;
+
+INSERT INTO Estado(id, estado) VALUES (1,"PLANIFICADA");
+INSERT INTO Estado(id, estado) VALUES (2,"EN_CURSO");
+INSERT INTO Estado(id, estado) VALUES (3,"FINALIZADA");
+INSERT INTO Estado(id, estado) VALUES (4,"APROBADA");
+INSERT INTO Estado(id, estado) VALUES (5,"RECHAZADA");
+INSERT INTO Estado(id, estado) VALUES (6,"RE_ABIERTA");
 
 INSERT INTO GrupoUsuario (idGrupoUsuario, nombreGrupo) VALUES (1, "ADMINISTRADORES");
 INSERT INTO GrupoUsuario (idGrupoUsuario, nombreGrupo) VALUES (2, "LIDERES");
 INSERT INTO GrupoUsuario (idGrupoUsuario, nombreGrupo) VALUES (3, "DESARROLLADORES");
 
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("admin","admin@mail.com",1);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "lider1@mail.com", 2);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "lider2@mail.com", 2);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "desarrollador1@mail.com", 3);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "desarrollador2@mail.com", 3);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "desarrollador3@mail.com", 3);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "desarrollador4@mail.com", 3);
-INSERT INTO Usuario(clave, mail, ID_GRUPO) VALUES ("1234", "desarrollador5@mail.com", 3);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("admin","admin@mail.com",1,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "lider1@mail.com", 2,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "lider2@mail.com", 2,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "desarrollador1@mail.com", 3,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "desarrollador2@mail.com", 3,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "desarrollador3@mail.com", 3,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "desarrollador4@mail.com", 3,10.0);
+INSERT INTO Usuario(clave, mail, ID_GRUPO,salarioHora) VALUES ("1234", "desarrollador5@mail.com", 3,10.0);
 
 
 INSERT INTO Proyecto (costo, HORAS_PRESUPUESTADAS, ID_USUARIO_LIDER) VALUES (5000, 120, 2);

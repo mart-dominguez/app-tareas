@@ -45,6 +45,7 @@ public class GestionTareasServiceIntegrationTest {
     
     @Deployment
     public static JavaArchive createDeployment() {
+        
         return ShrinkWrap.create(JavaArchive.class)
                 //.addPackages(true,"com.mavha.cap.java.app.tareas.util","com.mavha.cap.java.app.tareas.service","com.mavha.cap.java.app.tareas.modelo","com.mavha.cap.java.app.tareas.dao.util","com.mavha.cap.java.app.tareas.dao","com.mavha.cap.java.app.tareas.controller")
                 .addPackages(true,"com.mavha.cap.java.app.tareas.modelo","com.mavha.cap.java.app.tareas.dao")
@@ -52,6 +53,8 @@ public class GestionTareasServiceIntegrationTest {
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
                 .addAsResource("data/load-data-test.sql", "data/load-data-test.sql")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+        
+        
      
       /*return ShrinkWrap.create(ZipImporter.class, "app-tareas.war").importFrom(new File("target/app-tareas-1.0-SNAPSHOT.war"))
             .as(WebArchive.class);*/
